@@ -4,10 +4,10 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Bootstrap Metro Dashboard by Dennis Ji for ARM demo</title>
-	<meta name="description" content="Bootstrap Metro Dashboard">
-	<meta name="author" content="Dennis Ji">
-	<meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<title>项目管理系统</title>
+	<meta name="description" content="项目管理系统">
+	<meta name="author" content="soly">
+	<meta name="keyword" content="项目管理、产品管理、公司治理">
 	<!-- end: Meta -->
 	
 	<!-- start: Mobile Specific -->
@@ -17,7 +17,7 @@
 	<!-- start: CSS -->
 	<link id="bootstrap-style" href="../Public/css/bootstrap.min.css" rel="stylesheet">
 	<link href="../Public/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link id="base-style" href="css/style.css" rel="stylesheet">
+	<link id="base-style" href="../Public/css/style.css" rel="stylesheet">
 	<link id="base-style-responsive" href="../Public/css/style-responsive.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
@@ -43,7 +43,7 @@
 </head>
 
 <body>
-		<!-- start: Header -->
+<!-- start: Header -->
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
@@ -52,7 +52,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>Metro</span></a>
+				<a class="brand" href="index.html"><span>项目管理系统</span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -63,81 +63,81 @@
 							</a>
 							<ul class="dropdown-menu notifications">
 								<li class="dropdown-menu-title">
- 									<span>You have 11 notifications</span>
+ 									<span>你有11个通知</span>
 									<a href="#refresh"><i class="icon-repeat"></i></a>
 								</li>	
                             	<li>
                                     <a href="#">
 										<span class="icon blue"><i class="icon-user"></i></span>
-										<span class="message">New user registration</span>
-										<span class="time">1 min</span> 
+										<span class="message">新用户注册</span>
+										<span class="time">1分钟</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon green"><i class="icon-comment-alt"></i></span>
 										<span class="message">New comment</span>
-										<span class="time">7 min</span> 
+										<span class="time">7分钟</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon green"><i class="icon-comment-alt"></i></span>
 										<span class="message">New comment</span>
-										<span class="time">8 min</span> 
+										<span class="time">8分钟</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon green"><i class="icon-comment-alt"></i></span>
 										<span class="message">New comment</span>
-										<span class="time">16 min</span> 
+										<span class="time">16分钟</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon blue"><i class="icon-user"></i></span>
 										<span class="message">New user registration</span>
-										<span class="time">36 min</span> 
+										<span class="time">36分钟</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon yellow"><i class="icon-shopping-cart"></i></span>
 										<span class="message">2 items sold</span>
-										<span class="time">1 hour</span> 
+										<span class="time">1小时</span> 
                                     </a>
                                 </li>
 								<li class="warning">
                                     <a href="#">
 										<span class="icon red"><i class="icon-user"></i></span>
 										<span class="message">User deleted account</span>
-										<span class="time">2 hour</span> 
+										<span class="time">2小时</span> 
                                     </a>
                                 </li>
 								<li class="warning">
                                     <a href="#">
 										<span class="icon red"><i class="icon-shopping-cart"></i></span>
 										<span class="message">New comment</span>
-										<span class="time">6 hour</span> 
+										<span class="time">6小时</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon green"><i class="icon-comment-alt"></i></span>
 										<span class="message">New comment</span>
-										<span class="time">yesterday</span> 
+										<span class="time">昨天</span> 
                                     </a>
                                 </li>
 								<li>
                                     <a href="#">
 										<span class="icon blue"><i class="icon-user"></i></span>
-										<span class="message">New user registration</span>
-										<span class="time">yesterday</span> 
+										<span class="message">新用户注册</span>
+										<span class="time">昨天</span> 
                                     </a>
                                 </li>
                                 <li class="dropdown-menu-sub-footer">
-                            		<a>View all notifications</a>
+                            		<a>查看所有通知</a>
 								</li>	
 							</ul>
 						</li>
@@ -148,13 +148,13 @@
 							</a>
 							<ul class="dropdown-menu tasks">
 								<li class="dropdown-menu-title">
- 									<span>You have 17 tasks in progress</span>
+ 									<span>你有17个任务在进行</span>
 									<a href="#refresh"><i class="icon-repeat"></i></a>
 								</li>
 								<li>
                                     <a href="#">
 										<span class="header">
-											<span class="title">iOS Development</span>
+											<span class="title">iOS项目开发</span>
 											<span class="percent"></span>
 										</span>
                                         <div class="taskProgress progressSlim red">80</div> 
@@ -163,7 +163,7 @@
                                 <li>
                                     <a href="#">
 										<span class="header">
-											<span class="title">Android Development</span>
+											<span class="title">Android项目开发</span>
 											<span class="percent"></span>
 										</span>
                                         <div class="taskProgress progressSlim green">47</div> 
@@ -172,7 +172,7 @@
                                 <li>
                                     <a href="#">
 										<span class="header">
-											<span class="title">ARM Development</span>
+											<span class="title">PHP项目开发</span>
 											<span class="percent"></span>
 										</span>
                                         <div class="taskProgress progressSlim yellow">32</div> 
@@ -181,7 +181,7 @@
 								<li>
                                     <a href="#">
 										<span class="header">
-											<span class="title">ARM Development</span>
+											<span class="title">.NET开发</span>
 											<span class="percent"></span>
 										</span>
                                         <div class="taskProgress progressSlim greenLight">63</div> 
@@ -190,14 +190,14 @@
                                 <li>
                                     <a href="#">
 										<span class="header">
-											<span class="title">ARM Development</span>
+											<span class="title">Java开发</span>
 											<span class="percent"></span>
 										</span>
                                         <div class="taskProgress progressSlim orange">80</div> 
                                     </a>
                                 </li>
 								<li>
-                            		<a class="dropdown-menu-sub-footer">View all tasks</a>
+                            		<a class="dropdown-menu-sub-footer">查看所有通知</a>
 								</li>	
 							</ul>
 						</li>
@@ -217,14 +217,15 @@
 										<span class="avatar"><img src="../Public/img/avatar.jpg" alt="Avatar"></span>
 										<span class="header">
 											<span class="from">
-										    	Dennis Ji
+										    	admin
 										     </span>
 											<span class="time">
-										    	6 min
+										    	6 分钟
 										    </span>
 										</span>
                                         <span class="message">
-                                            Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                            <!--Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore-->
+                                            test1
                                         </span>  
                                     </a>
                                 </li>
@@ -278,7 +279,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-										<span class="avatar"><img src="../Public/img/avatar5.jpg" alt="Avatar"></span>
+										<span class="avatar"><img src="../Public/img/avatar.jpg" alt="Avatar"></span>
 										<span class="header">
 											<span class="from">
 										    	Dennis Ji
@@ -330,17 +331,19 @@
 		<div class="container-fluid-full">
 		<div class="row-fluid">
 				
-			<!-- start: Main Menu -->
+			
+            <!-- start: Main Menu -->
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="index.html"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
-						<li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet"> Messages</span></a></li>
-						<li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a></li>
+						<li><a href="index.html"><i class="icon-bar-chart"></i><span class="hidden-tablet"> 首页</span></a></li>	
+						<li><a href="../Application/Project.php"><i class="icon-bar-chart"></i><span class="hidden-tablet"> 项目管理</span></a></li>	
+						<li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet"> 信息</span></a></li>
+						<li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> 任务</span></a></li>
 						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
 						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span><span class="label label-important"> 3 </span></a>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> 下载</span><span class="label label-important"> 3 </span></a>
 							<ul>
 								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 1</span></a></li>
 								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 2</span></a></li>
@@ -1464,7 +1467,7 @@
 	<!-- start: JavaScript-->
 
 		<script src="../Public/js/jquery-1.9.1.min.js"></script>
-	    <script src="../Public/js/jquery-migrate-1.0.0.min.js"></script>
+	   <script src="../Publicjs/jquery-migrate-1.0.0.min.js"></script>
 	
 		<script src="../Public/js/jquery-ui-1.10.0.custom.min.js"></script>
 	
@@ -1481,10 +1484,10 @@
 		<script src='../Public/js/jquery.dataTables.min.js'></script>
 
 		<script src="../Public/js/excanvas.js"></script>
-	    <script src="../Public/js/jquery.flot.js"></script>
-	    <script src="../Public/js/jquery.flot.pie.js"></script>
-	    <script src="../Public/js/jquery.flot.stack.js"></script>
-	    <script src="../Public/js/jquery.flot.resize.min.js"></script>
+	   <script src="../Public/js/jquery.flot.js"></script>
+	   <script src="../Public/js/jquery.flot.pie.js"></script>
+	   <script src="../Public/js/jquery.flot.stack.js"></script>
+	   <script src="../Public/js/jquery.flot.resize.min.js"></script>
 	
 		<script src="../Public/js/jquery.chosen.min.js"></script>
 	
@@ -1518,6 +1521,7 @@
 
 		<script src="../Public/js/custom.js"></script>
 	<!-- end: JavaScript-->
+	
 	
 </body>
 </html>
