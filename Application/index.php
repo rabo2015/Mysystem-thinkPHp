@@ -20,7 +20,7 @@
 	<link id="base-style" href="../Public/css/style.css" rel="stylesheet">
 	<link id="base-style-responsive" href="../Public/css/style-responsive.css" rel="stylesheet">
 	<!-- end: style -->
-	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="../Public/img/favicon.ico">
 	<!-- end: Favicon -->	
 </head>
 <body>
