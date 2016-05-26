@@ -394,7 +394,7 @@
 							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
 						</div>
 					</div>
-					<div class="box-content">
+	<!--				<div class="box-content">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
 						  <thead>
 							  <tr>
@@ -405,9 +405,9 @@
 								  <th>操作</th>
 							  </tr>
 						  </thead>   
-						  <tbody>
+						  <tbody>-->
 							  
-							  <?php
+<?php
  
 $conn=mysqli_connect('localhost','root','root');
 mysqli_select_db('MysysDatabase',$conn);
@@ -424,14 +424,14 @@ if (!isset($page)) {
 } //如果没有值,则赋值1
 $startCount=($page-1)*$perNumber; //分页开始,根据此方法计算出开始的记录
 $result=mysql_query("select * from usrinfo limit $startCount,$perNumber"); //根据前面的计算出开始的记录和记录数
-echo "<div class="box-content">";
-echo "<table class="table table-striped table-bordered bootstrap-datatable datatable">";
+echo '<div class="box-content">';
+echo '<table class="table table-striped table-bordered bootstrap-datatable datatable">';
 echo "<thead>";
 echo "<tr>";
 echo "<th>用户名</th>";
 echo "<th>创建日期</th>";
 echo "<th>角色</th>";
-echo "<th>成员</th>";
+echo "<th>状态</th>";
 echo "<th>操作</th>";
 echo "</tr>";
 echo "</thead>";   
@@ -446,54 +446,23 @@ echo "<tbody>";
 while ($row=mysql_fetch_array($result)) {
  
  echo "<tr>";
- echo "<td class="center">$row[0]</td>"; 
- echo "<td class="center">$row[1]</td>";
- echo "<td class="center">$row[2]</td>";
- echo "<td class="center">$row[3]</td>"; 
- echo "<td>$row[4]</td>"; 
- echo "<td>$row[5]</td>"; //显示数据库的内容
-echo "</tr>";
+ echo '<td class="center">$row[usrname]</td>'; 
+ echo '<td class="center">$row[DataReg]</td>';
+ echo '<td class="center">$row[role]</td>';
+ echo '<td class="center">$row[]</td>'; 
+ echo '<td class="center"><a class="btn btn-success" href="#"><i class="halflings-icon white zoom-in"></i></a>';
+ echo '<a class="btn btn-info" href="#"><i class="halflings-icon white edit"></i></a> ';
+ echo '<a class="btn btn-danger" href="#"><i class="halflings-icon white trash"></i></a> </td>';
+ //echo '<td>$row[5]</td>'; //显示数据库的内容
+ echo "</tr>";
 }
-//<tr>
-//								<td>Dennis Ji</td>
-//								<td class="center">2012/01/01</td>
-//								<td class="center">Member</td>
-//								<td class="center">
-//									<span class="label label-success">Active</span>
-//								</td>
-//								<td class="center">
-//									<a class="btn btn-success" href="#">
-//										<i class="halflings-icon white zoom-in"></i>  
-//									</a>
-//									<a class="btn btn-info" href="#">
-//										<i class="halflings-icon white edit"></i>  
-//									</a>
-//									<a class="btn btn-danger" href="#">
-//										<i class="halflings-icon white trash"></i> 
-//									</a>
-//								</td>
-//							</tr>
 							
-						  echo "</tbody>";
-					  echo "</table>";            
+echo "</tbody>";
+echo "</table>";            
  
-if ($page != 1) { //页数不等于1
+//if ($page != 1) { //页数不等于1
 ?>
-<a href="02.php?page=<?php echo $page - 1;?>">上一页</a> <!--显示上一页-->
-<?php
-}
-for ($i=1;$i<=$totalPage;$i++) {  //循环显示出页面
-?>
-<a href="02.php?page=<?php echo $i;?>"><?php echo $i ;?></a>
-<?php
-}
-if ($page<$totalPage) { //如果page小于总页数,显示下一页链接
-?>
-<a href="02.php?page=<?php echo $page + 1;?>">下一页</a>
-<?php
-} 
-?>
-							  
+				  
 							  
 							  
 						
