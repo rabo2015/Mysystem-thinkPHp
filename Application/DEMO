@@ -1,0 +1,68 @@
+$conn=mysqli_connect('localhost','root','root');
+mysqli_select_db('MysysDatabase',$conn);
+mysql_query('set names utf8',$conn);
+//获取当前页数
+if(isset($GET['page'])){
+	$page=intval($GET['page']);
+}else{
+	$page=1;
+}
+//每页数量
+$PageSize=10;
+//获取总数据量
+$sql="select count(*) as amount from usrinfo";
+$result=mysql_query($sql);
+$row=mysql_fetch_row($result);
+$amount=$row['amount'];
+//计算总页数
+if($amount){
+	if($amount<$page_size){$page_count=1;}
+	//如果综述小于$PageSize那么只有一页
+	if($amount%$page_size)
+	//区总数量除以每页数的余数
+	{
+		$page_count=(int)($amount/$page_size)+1;
+	//如果有余，则页数等于总数据量除以每页数的结果再加一
+	}else{
+		$page_count=$amount/$page_size;
+	}
+}else{
+		$page_count=0;
+}
+//翻页链接
+echo '<div class="pagination pagination-centered">';
+echo "<ul>";
+$page_string='';
+if($page=1){
+	$page_string.='第一页｜上一页｜';
+}else{
+	$page_string.='<li><a href=?page=1>第一页</a></li><li><a href=?page=".($page-2).">上一页</a></li>';
+}
+if(($page==$page_count)||($page_count==0)){
+	$page_string.='下一页｜｜尾页';
+}else{
+	$page_string.='<li<<a href=?page='.($page+1).'>下一页</a>|<li><li><a href=?page='.$page_count.'>尾页</a></li>';
+}
+//获取数据，以二维书记格式返回结果
+if($amout){
+	$sql = "select * from table order by id desc limit ". ($page-1)*$page_size .", $page_size";
+	$result = mysql_query($sql);
+	while ( $row = mysql_fetch_row($result) ){
+		$rowset[] = $row;
+	}
+}else{
+	$rowset=array();
+}
+
+
+						  //<ul>
+							//<li><a href="#">Prev</a></li>
+							//<li class="active">
+							 // <a href="#">1</a>
+							//</li>
+							//<li><a href="#">2</a></li>
+							//<li><a href="#">3</a></li>
+							//<li><a href="#">4</a></li>
+							//<li><a href="#">Next</a></li>
+echo "</ul>"; 						 // </ul>
+echo "</div>";     

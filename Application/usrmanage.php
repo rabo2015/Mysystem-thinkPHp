@@ -394,73 +394,105 @@
 							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
 						</div>
 					</div>
-	<!--				<div class="box-content">
-						<table class="table table-striped table-bordered bootstrap-datatable datatable">
-						  <thead>
-							  <tr>
-								  <th>用户名</th>
-								  <th>创建日期</th>
-								  <th>角色</th>
-								  <th>成员</th>
-								  <th>操作</th>
-							  </tr>
-						  </thead>   
-						  <tbody>-->
+
 							  
 <?php
- 
-$conn=mysqli_connect('localhost','root','root');
-mysqli_select_db('MysysDatabase',$conn);
-mysql_query('set names utf8',$conn);
- 
-$perNumber=10; //每页显示的记录数
-$page=$_GET['page']; //获得当前的页面值
-$count=mysql_query("select count(*) from usrinfo"); //获得记录总数
-$rs=mysql_fetch_array($count); 
-$totalNumber=$rs[0];
-$totalPage=ceil($totalNumber/$perNumber); //计算出总页数
-if (!isset($page)) {
- $page=1;
-} //如果没有值,则赋值1
-$startCount=($page-1)*$perNumber; //分页开始,根据此方法计算出开始的记录
-$result=mysql_query("select * from usrinfo limit $startCount,$perNumber"); //根据前面的计算出开始的记录和记录数
-echo '<div class="box-content">';
-echo '<table class="table table-striped table-bordered bootstrap-datatable datatable">';
-echo "<thead>";
-echo "<tr>";
-echo "<th>用户名</th>";
-echo "<th>创建日期</th>";
-echo "<th>角色</th>";
-echo "<th>状态</th>";
-echo "<th>操作</th>";
-echo "</tr>";
-echo "</thead>";   
-echo "<tbody>";
-//echo "<table border='1'>";
-//echo "<tr>";
-//echo "<th>id</th>";
-//echo "<th>角色</th>";
-//echo "<th>c成员</th>";
-//echo "<th>操作</td>";
-//echo "</tr>";
-while ($row=mysql_fetch_array($result)) {
- 
- echo "<tr>";
- echo '<td class="center">$row[usrname]</td>'; 
- echo '<td class="center">$row[DataReg]</td>';
- echo '<td class="center">$row[role]</td>';
- echo '<td class="center">$row[]</td>'; 
- echo '<td class="center"><a class="btn btn-success" href="#"><i class="halflings-icon white zoom-in"></i></a>';
- echo '<a class="btn btn-info" href="#"><i class="halflings-icon white edit"></i></a> ';
- echo '<a class="btn btn-danger" href="#"><i class="halflings-icon white trash"></i></a> </td>';
- //echo '<td>$row[5]</td>'; //显示数据库的内容
- echo "</tr>";
-}
-							
-echo "</tbody>";
-echo "</table>";            
- 
-//if ($page != 1) { //页数不等于1
+	// 建立数据库连接
+	
+	// 获取当前页数
+	//if( isset($_GET['page']) ){
+	 //$page = intval( $_GET['page'] );
+	//}
+	//else{
+	//	$page = 1;
+	//}
+	//这句就是获取page=18中的page的值，假如不存在page，那么页数就是1。
+	$link = mysql_connect("localhost", "root", "root");
+	//查询数据的总数,id是数据库中的一个自动赋值的字段
+	//$select=mysql_select_db("MysystemDatabase",$link);
+	//选择要操作的数据库
+	//$total=mysql_num_rows(mysql_query("SELECT usrid FROM usrinfo"));
+	//查询数据的总数,usrid是数据库中的一个自动赋值的字段
+    //echo $total;
+	
+ 	//$totalPage=ceil($count/$perNumber); //计算出总页数
+	//echo $totalPage;
+	 //假如传入的页数参数大于总页数，则显示错误信息
+	//If($page>$pagenum || $page == 0){
+	//	   Echo "Error : Can Not Found The page .";
+	//	   Exit;
+	//}
+    
+	//$offset=($page-1)*$num;                                         
+	//获取limit的第一个参数的值，假如第一页则为(1-1)*10=0,第二页为(2-1)*10=10。	
+	 //$info=mysql_query("select name from table limit $offset,$num");    
+	//获取相应页数所需要显示的数据,name是数据里的一个字段
+	//While($it=mysql_fetch_array($info)){
+	//	   echo $it['name']."
+	//";
+	//}                                                               //显示数据
+
+
+	
+	//$page=$_GET['page']; //获得当前的页面值
+	//echo $page;
+	//$sql="SELECT count(*) as amount FROM usrinfo"; //获得记录总数
+	mysql_query(usrinfo,$link);
+	mysql_query('set names utf8',$link);
+	$perNumber=3; //每页显示的记录数
+
+	$pagge=$_GET['page'];//获取但前的页面值
+	//要做一些防注入处理, 比如: $page = intval($page); $page = max (1, $page);
+	$count=mysql_query("SELECT count(*) FROM usrinfo");//获取记录综述
+	$rs=mysql_fetch_array($count);//
+	$totalNumber=$rs[0];//
+	$totalPage=ceil($totalNumber/$perNumber);//计算总页数
+	echo $totalNumber;
+	
+	if (!isset($page)) {
+	 $page=1;
+	} //如果没有值,则赋值1
+	$startCount=($page-1)*$perNumber; //分页开始,根据此方法计算出开始的记录
+	$result=mysql_query("select * from usrinfo limit $startCount,$perNumber"); //根据前面的计算出开始的记录和记录数
+	//$rows=mysql_fetch_array($result); 
+	$amount=$rows['amount'];
+	
+    echo $rows;
+	echo $amount;
+	$totalPage=ceil($count/$perNumber); //计算出总页数
+
+	echo '<div class="box-content">';
+	echo '<table class="table table-striped table-bordered bootstrap-datatable datatable">';
+	echo "<thead>";
+	echo "<tr>";
+	echo '<th class="center">用户名</th>';
+	echo '<th class="center">创建日期</th>';
+	echo '<th class="center">角色</th>';
+	echo '<th class="center">状态</th>';
+	echo '<th class="center">操作</th>';
+	echo "</tr>";
+	echo "</thead>";   
+	echo "<tbody>";
+
+	while ($row=mysql_fetch_array($result)) {
+
+		 echo "<tr>";
+		 echo '<td class="center">$row[0]</td>'; 
+		 echo '<td class="center">$row[1]</td>';
+		 echo '<td class="center">$row[2]</td>';
+		 echo '<td class="center">$row[3]</td>'; 
+		 echo '<td class="center">$row[4]</td>'; 
+		 echo '<td class="center"><a class="btn btn-success" href="#"><i class="halflings-icon white zoom-in"></i></a>';
+		 echo '<a class="btn btn-info" href="#"><i class="halflings-icon white edit"></i></a> ';
+		 echo '<a class="btn btn-danger" href="#"><i class="halflings-icon white trash"></i></a> </td>';
+	 //echo '<td>$row[5]</td>'; //显示数据库的内容
+	 echo "</tr>";
+	}
+
+	echo "</tbody>";
+	echo "</table>";            
+
+//案例：http://www.2cto.com/database/201409/332441.html
 ?>
 				  
 							  
@@ -471,421 +503,7 @@ echo "</table>";
 			
 			</div><!--/row-->
 
-			<div class="row-fluid sortable">
-				<div class="box span6">
-					<div class="box-header">
-						<h2><i class="halflings-icon align-justify"></i><span class="break"></span>Simple Table</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<table class="table">
-							  <thead>
-								  <tr>
-									  <th>Username</th>
-									  <th>Date registered</th>
-									  <th>Role</th>
-									  <th>Status</th>                                          
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-important">Banned</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Admin</td>
-									<td class="center">
-										<span class="label">Inactive</span>
-									</td>                                        
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-warning">Pending</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
-				</div><!--/span-->
-				
-				<div class="box span6">
-					<div class="box-header">
-						<h2><i class="halflings-icon align-justify"></i><span class="break"></span>Striped Table</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<table class="table table-striped">
-							  <thead>
-								  <tr>
-									  <th>Username</th>
-									  <th>Date registered</th>
-									  <th>Role</th>
-									  <th>Status</th>                                          
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-important">Banned</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Admin</td>
-									<td class="center">
-										<span class="label">Inactive</span>
-									</td>                                        
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-warning">Pending</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
-				</div><!--/span-->
-			</div><!--/row-->
 			
-			<div class="row-fluid sortable">	
-				<div class="box span6">
-					<div class="box-header">
-						<h2><i class="halflings-icon align-justify"></i><span class="break"></span>Bordered Table</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<table class="table table-bordered">
-							  <thead>
-								  <tr>
-									  <th>Username</th>
-									  <th>Date registered</th>
-									  <th>Role</th>
-									  <th>Status</th>                                          
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-important">Banned</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Admin</td>
-									<td class="center">
-										<span class="label">Inactive</span>
-									</td>                                        
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-warning">Pending</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
-				</div><!--/span-->
-				
-				<div class="box span6">
-					<div class="box-header">
-						<h2><i class="halflings-icon align-justify"></i><span class="break"></span>Condensed Table</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<table class="table table-condensed">
-							  <thead>
-								  <tr>
-									  <th>Username</th>
-									  <th>Date registered</th>
-									  <th>Role</th>
-									  <th>Status</th>                                          
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-important">Banned</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Admin</td>
-									<td class="center">
-										<span class="label">Inactive</span>
-									</td>                                        
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-warning">Pending</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
-				</div><!--/span-->
-			
-			</div><!--/row-->
-			
-			<div class="row-fluid sortable">	
-				<div class="box span12">
-					<div class="box-header">
-						<h2><i class="halflings-icon align-justify"></i><span class="break"></span>Combined All Table</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<table class="table table-bordered table-striped table-condensed">
-							  <thead>
-								  <tr>
-									  <th>Username</th>
-									  <th>Date registered</th>
-									  <th>Role</th>
-									  <th>Status</th>                                          
-								  </tr>
-							  </thead>   
-							  <tbody>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-important">Banned</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/02/01</td>
-									<td class="center">Admin</td>
-									<td class="center">
-										<span class="label">Inactive</span>
-									</td>                                        
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/03/01</td>
-									<td class="center">Member</td>
-									<td class="center">
-										<span class="label label-warning">Pending</span>
-									</td>                                       
-								</tr>
-								<tr>
-									<td>Dennis Ji</td>
-									<td class="center">2012/01/21</td>
-									<td class="center">Staff</td>
-									<td class="center">
-										<span class="label label-success">Active</span>
-									</td>                                        
-								</tr>                                   
-							  </tbody>
-						 </table>  
-						 <div class="pagination pagination-centered">
-						  <ul>
-							<li><a href="#">Prev</a></li>
-							<li class="active">
-							  <a href="#">1</a>
-							</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">Next</a></li>
-						  </ul>
-						</div>     
-					</div>
-				</div><!--/span-->
-			</div><!--/row-->
-    
-
-	</div><!--/.fluid-container-->
-	
-			<!-- end: Content -->
-		</div><!--/#content.span10-->
-		</div><!--/fluid-row-->
-		
-	<div class="modal hide fade" id="myModal">
-		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">×</button>
-			<h3>Settings</h3>
-		</div>
-		<div class="modal-body">
-			<p>Here settings can be configured...</p>
-		</div>
-		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">Close</a>
-			<a href="#" class="btn btn-primary">Save changes</a>
-		</div>
-	</div>
-	
-	<div class="clearfix"></div>
-	
 	<footer>
 
 		<p>
@@ -895,10 +513,10 @@ echo "</table>";
 
 	</footer>
 	
-	<!-- start: JavaScript-->
+	<!-- start: JavaScript
 
 		<script src="../Public/js/jquery-1.9.1.min.js"></script>
-	   <script src="../Publicjs/jquery-migrate-1.0.0.min.js"></script>
+	  <!--  <script src="../Publicjs/jquery-migrate-1.0.0.min.js"></script>
 	
 		<script src="../Public/js/jquery-ui-1.10.0.custom.min.js"></script>
 	
@@ -950,7 +568,7 @@ echo "</table>";
 	
 		<script src="../Public/js/retina.js"></script>
 
-		<script src="../Public/js/custom.js"></script>
+		<script src="../Public/js/custom.js"></script>-->
 	<!-- end: JavaScript-->
 	
 	
